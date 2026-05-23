@@ -1,0 +1,347 @@
+/* ─── CSS VARIABLES ─── */
+:root {
+  /* Brand blues (from reference) */
+  --brand-primary: #185FA5;
+  --brand-hover: #0C447C;
+  --brand-light: #E6F1FB;
+  --brand-mid: #378ADD;
+  --brand-soft: #B5D4F4;
+
+  /* Backgrounds – light theme */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F7FA;
+  --bg-tertiary: #EEF1F6;
+
+  /* Borders */
+  --border-primary: #D0D7E3;
+  --border-secondary: #E2E8F0;
+  --border-tertiary: #EEF1F6;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+  --text-tertiary: #9CA3AF;
+  --text-inverse: #FFFFFF;
+
+  /* Status colours */
+  --status-available-bg: #DCFCE7;
+  --status-available-text: #166534;
+  --status-reserved-bg: #FEF3C7;
+  --status-reserved-text: #92400E;
+  --status-loaned-bg: #DBEAFE;
+  --status-loaned-text: #1E40AF;
+  --status-maintenance-bg: #FEE2E2;
+  --status-maintenance-text: #991B1B;
+
+  /* Semantic */
+  --success: #16A34A;
+  --warning: #D97706;
+  --error: #E24B4A;
+  --info: #378ADD;
+
+  /* Radius & spacing */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --gap: 12px;
+
+  /* Typography */
+  --font: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'DM Mono', monospace;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.06);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; }
+body { font-family: var(--font); background: var(--bg-tertiary); color: var(--text-primary); line-height: 1.5; min-width: 320px; min-height: 100dvh; overflow-x: hidden; }
+button { cursor: pointer; font-family: var(--font); }
+input, select, textarea { font-family: var(--font); }
+button, input, select, textarea { touch-action: manipulation; }
+img, svg { max-width: 100%; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-primary); border-radius: 99px; }
+
+/* ─── UTILITIES ─── */
+.mono { font-family: var(--mono); font-size: 12px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* Mobile/PWA readiness */
+.app-shell {
+  min-height: 100dvh !important;
+}
+
+.app-card {
+  min-width: 0;
+}
+
+.top-nav__tabs {
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.top-nav__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.top-nav__tab {
+  min-height: 36px;
+}
+
+.page-header__action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.app-table-wrap {
+  width: 100%;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-table {
+  min-width: 680px;
+}
+
+.app-search input {
+  max-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .split-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --radius-md: 8px;
+    --radius-lg: 10px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .app-main {
+    max-width: 100% !important;
+    padding: 16px 12px calc(20px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .top-nav {
+    height: auto !important;
+    min-height: 52px;
+    padding: 8px 12px 10px !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .top-nav__brand {
+    margin-right: auto !important;
+    min-width: 0;
+  }
+
+  .top-nav__brand img {
+    width: 58px !important;
+    height: 30px !important;
+  }
+
+  .top-nav__brand > span {
+    max-width: 132px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px !important;
+  }
+
+  .top-nav__actions {
+    margin-left: auto;
+    gap: 8px !important;
+  }
+
+  .top-nav__user-meta {
+    display: none !important;
+  }
+
+  .top-nav__logout {
+    width: 38px !important;
+    height: 38px !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+
+  .top-nav__logout-label {
+    display: none !important;
+  }
+
+  .top-nav__tabs {
+    order: 3;
+    flex: 0 0 calc(100% + 24px) !important;
+    margin: 0 -12px !important;
+    padding: 4px 12px 0 !important;
+    gap: 6px !important;
+  }
+
+  .top-nav__tab {
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+  }
+
+  .page-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .page-header h2 {
+    font-size: 18px !important;
+  }
+
+  .page-header__action {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .page-header__action > *,
+  .page-header__action .app-btn,
+  .page-header__action button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .toolbar-card {
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+
+  .toolbar-card .app-search {
+    width: 100% !important;
+  }
+
+  .toolbar-card .app-search input {
+    width: 100% !important;
+  }
+
+  .toolbar-card > span {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+
+  .resource-grid,
+  .metrics-grid,
+  .quick-grid,
+  .split-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .resource-grid,
+  .split-grid {
+    gap: 12px !important;
+  }
+
+  .metrics-grid {
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0 !important;
+  }
+
+  .loan-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .loan-card > span {
+    align-self: flex-start;
+  }
+
+  .app-modal-backdrop {
+    align-items: flex-end !important;
+    padding: 12px !important;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .app-modal-panel {
+    max-width: 100% !important;
+    max-height: 88dvh !important;
+    border-radius: 14px 14px 10px 10px !important;
+  }
+
+  .app-modal-header,
+  .app-modal-body {
+    padding: 16px !important;
+  }
+
+  .app-modal-footer {
+    flex-direction: column-reverse !important;
+    padding: 12px 16px !important;
+  }
+
+  .app-modal-footer .app-btn,
+  .app-modal-footer button {
+    width: 100%;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  .app-table {
+    min-width: 640px;
+  }
+
+  .app-toast {
+    right: 12px !important;
+    bottom: calc(14px + env(safe-area-inset-bottom)) !important;
+    left: 12px !important;
+    justify-content: center;
+  }
+
+  .app-btn,
+  button {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .stats-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .top-nav__brand > span {
+    display: none !important;
+  }
+
+  .app-table {
+    min-width: 600px;
+  }
+}
