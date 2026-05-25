@@ -20,36 +20,37 @@ UniPréstamos es una aplicación web desarrollada en **React** que permite admin
 ##  Estructura del proyecto
 
 ```
-src/
-├── components/
-│   ├── UI.jsx          # Componentes reutilizables
-│   └── TopNav.jsx      # Navegación principal
-│
-├── pages/
-│   ├── admin/          # Panel de administración
-│   │   ├── Dashboard.jsx
-│   │   ├── Resources.jsx
-│   │   ├── Reservations.jsx
-│   │   ├── Loans.jsx
-│   │   ├── Users.jsx
-│   │   └── Reports.jsx
+prestamo-recursos/
+├── src/
+│   ├── components/
+│   │   ├── UI.jsx          # Componentes reutilizables
+│   │   └── TopNav.jsx      # Navegación principal
 │   │
-│   └── user/           # Vista del usuario
-│       ├── Home.jsx
-│       ├── Catalog.jsx
-│       ├── MyReservations.jsx
-│       └── MyLoans.jsx
+│   ├── pages/
+│   │   ├── admin/          # Panel de administración
+│   │   └── user/           # Vista del usuario
+│   │
+│   ├── data/
+│   │   └── firebaseService.js  # Conexión con Firebase
+│   │
+│   ├── styles/
+│   │   └── globals.css     # Estilos globales
+│   │
+│   ├── utils/
+│   │   └── useToast.js     # Notificaciones
+│   │
+│   └── App.jsx             # Lógica principal
 │
-├── data/
-│   └── firebaseService.js  # Conexión con Firebase
+├── backend/
+│   └── src/
+│       ├── auth/
+│       ├── reservations/
+│       ├── resources/
+│       └── users/
 │
-├── styles/
-│   └── globals.css     # Estilos globales
-│
-├── utils/
-│   └── useToast.js     # Notificaciones
-│
-└── App.jsx             # Lógica principal
+├── public/
+├── package.json
+└── package-lock.json
 ```
 
 ---
@@ -65,6 +66,7 @@ src/
 
 * React
 * Firebase (Auth + Firestore)
+* Backend base con NestJS/TypeScript
 * CSS personalizado
 
 ---
@@ -88,4 +90,4 @@ npm start
 
 ## Estado del proyecto
 
-🟢 Funcional — listo para integrar backend y autenticación completa
+🟢 Funcional — frontend React y backend base incluidos
