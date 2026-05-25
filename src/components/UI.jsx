@@ -95,11 +95,21 @@ export function Modal({ open, onClose, title, children, footer }) {
     return () => window.removeEventListener('keydown', handler);
   }, [onClose]);
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) onClose?.();
+  };
+
+  const handleBackdropKeyDown = (e) => {
+    if (e.key === 'Escape') onClose?.();
+  };
+
   if (!open) return null;
   return (
     <div
       className="app-modal-backdrop"
-      onClick={(e) => { if (e.target === e.currentTarget) onClose?.(); }}
+      role="presentation"
+      onClick={handleBackdropClick}
+      onKeyDown={handleBackdropKeyDown}
       style={{
         position: 'fixed', inset: 0, background: 'rgba(17,24,39,0.45)',
         backdropFilter: 'blur(3px)', display: 'flex', alignItems: 'center',

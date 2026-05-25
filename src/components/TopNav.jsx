@@ -46,6 +46,32 @@ export default function TopNav({ mode, onModeChange, user, onLogout }) {
     return 'Estudiante';
   };
 
+  const highlightLogoutButton = (e) => {
+    e.currentTarget.style.background = 'var(--bg-secondary)';
+    e.currentTarget.style.borderColor = 'var(--border-primary)';
+  };
+
+  const resetLogoutButton = (e) => {
+    e.currentTarget.style.background = 'transparent';
+    e.currentTarget.style.borderColor = 'var(--border-secondary)';
+  };
+
+  const highlightNeutralButton = (e) => {
+    e.currentTarget.style.background = 'var(--bg-secondary)';
+  };
+
+  const resetNeutralButton = (e) => {
+    e.currentTarget.style.background = 'transparent';
+  };
+
+  const highlightDangerButton = (e) => {
+    e.currentTarget.style.background = '#DC2626';
+  };
+
+  const resetDangerButton = (e) => {
+    e.currentTarget.style.background = '#EF4444';
+  };
+
   return (
     <>
       <header className="top-nav" style={{
@@ -131,14 +157,10 @@ export default function TopNav({ mode, onModeChange, user, onLogout }) {
               transition: 'all 0.15s',
               fontFamily: 'inherit',
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = 'var(--bg-secondary)';
-              e.currentTarget.style.borderColor = 'var(--border-primary)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = 'transparent';
-              e.currentTarget.style.borderColor = 'var(--border-secondary)';
-            }}
+            onMouseOver={highlightLogoutButton}
+            onFocus={highlightLogoutButton}
+            onMouseOut={resetLogoutButton}
+            onBlur={resetLogoutButton}
             title="Cerrar sesión"
           >
             <LogOut size={16} />
@@ -186,12 +208,10 @@ export default function TopNav({ mode, onModeChange, user, onLogout }) {
                   transition: 'all 0.15s',
                   fontFamily: 'inherit',
                 }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = 'var(--bg-secondary)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                }}
+                onMouseOver={highlightNeutralButton}
+                onFocus={highlightNeutralButton}
+                onMouseOut={resetNeutralButton}
+                onBlur={resetNeutralButton}
               >
                 Cancelar
               </button>
@@ -212,12 +232,10 @@ export default function TopNav({ mode, onModeChange, user, onLogout }) {
                   transition: 'all 0.15s',
                   fontFamily: 'inherit',
                 }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = '#DC2626';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = '#EF4444';
-                }}
+                onMouseOver={highlightDangerButton}
+                onFocus={highlightDangerButton}
+                onMouseOut={resetDangerButton}
+                onBlur={resetDangerButton}
               >
                 Cerrar sesión
               </button>
