@@ -1,12 +1,12 @@
-# 🎓 GestRes
+# UniPréstamos
 
 ### Sistema de Gestión de Préstamo y Reserva de Recursos
 
-GestRes es una aplicación web desarrollada en **React** que permite administrar de forma sencilla los recursos institucionales, facilitando su **reserva, préstamo y control** tanto para administradores como para usuarios.
+UniPréstamos es una aplicación web desarrollada en **React** que permite administrar de forma sencilla los recursos institucionales, facilitando su **reserva, préstamo y control** tanto para administradores como para usuarios.
 
 ---
 
-## 🚀 ¿Qué hace?
+## ¿Qué hace?
 
 *  Gestión de recursos (salones, laboratorios, equipos)
 *  Sistema de reservas
